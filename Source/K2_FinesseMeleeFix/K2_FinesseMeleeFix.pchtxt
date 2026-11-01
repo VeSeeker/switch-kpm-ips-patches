@@ -1,0 +1,16 @@
+@nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: Vriff
+
+// Fixes KOTOR2 Aspyr's GetWeaponFinesse fallthrough so Finesse: Melee
+// Weapons no longer grants Dexterity attack bonus with lightsabers
+
+// Original:
+//  00450094 21 03 00 54    b.ne 0x71004500F8
+
+// Replacement:
+00450094 19000014       //  b 0x71004500F8

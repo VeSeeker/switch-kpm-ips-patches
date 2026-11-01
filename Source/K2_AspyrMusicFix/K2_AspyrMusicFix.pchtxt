@@ -1,0 +1,16 @@
+@nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: J
+
+// Disables audio ducking feature that causes music to be too quiet
+// during dialogue
+
+// Original:
+//  003b5ea4 00 08 21 1E    fmul s0,s0,s1
+
+// Replacement:
+003b5ea4 1f2003d5       //  nop

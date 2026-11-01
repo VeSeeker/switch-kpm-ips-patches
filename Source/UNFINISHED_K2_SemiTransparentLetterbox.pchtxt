@@ -1,9 +1,20 @@
 @nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
 
-// Part 1 SemiTransparentLetterbox for Kotor 2
-
 @flag offset_shift 0x100
 
 @enabled
 
+// Changes the dialogue letterbox alpha from 1.0 (opaque) to 0.5
+// (semi-transparent)
+
+//  CSWGuiDialogLetterbox:
 002aa964 00102c1e
+//  All inlined ResetFade calls:
+99999999 69696969
+99999999 69696969
+//  SetFade:
+88888888 78787878
+//  Draw:
+77777777 76767676
+//  0.5f constant:
+66666666 54545454

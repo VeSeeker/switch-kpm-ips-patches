@@ -1,0 +1,26 @@
+@nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: Vriff
+
+// Changes store expensive-time confirmations so both buying and selling
+// use a fixed 2500-credit prompt threshold
+
+// THIS IS CURRENTLY ONLY WORKING WITH SELLING, BUYING THRESHOLD IS 600
+
+// Original:
+//  0034339c 57 06 80 52    mov w23,#0x32
+//  003433a0 08 7D 17 1B    mul w8,w8,w23
+//  003433a4 1F E9 03 71    cmp w8,#0xfa
+//  003433a8 09 12 00 54    b.ls LAB_71003435e8
+//  003433ac 56 1F 80 52    mov w22,#0xfa
+
+// Replacement:
+0034339c 96388152       //  mov w22,#0x9c4
+003433a0 04000014       //  b 0x71003433b0
+003433a4 1f2003D5       //  nop
+003433a8 1f2003D5       //  nop
+003433ac 1f2003D5       //  nop
