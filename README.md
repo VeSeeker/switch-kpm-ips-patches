@@ -85,7 +85,7 @@ To uninstall, delete the folder.
 | ✅ | K2AspyrMusicFix | |
 | ⬜ | K2AspyrNormalMapsFix | |
 | ⬜ | K2AspyrSaberTextureFix | |
-| ⬜ | K2AspyrShaderFixes | |
+| 🚧 | K2AspyrShaderFixes | |
 | ❌ | K2AspyrVisibleConsole | |
 | ❌ | K2AspyrWindowingFixes | |
 | ❌ | K2ClassMenuClothes | |
@@ -98,7 +98,7 @@ To uninstall, delete the folder.
 | ❌ | Post-Combat Movement Fix | |
 | ⬜ | Referenced Model Stealth Fix | |
 | ⬜ | SaberThrowSFX | |
-| ⬜ | SemiTransparentLetterbox | |
+| 🚧 | SemiTransparentLetterbox | |
 | ❌ | ShaderDebug | |
 | 🚧 | StoreConfirmThreshold2500 | Currently works with selling, but not buying |
 | ⬜ | StoreNoConfirmThreshold | |
