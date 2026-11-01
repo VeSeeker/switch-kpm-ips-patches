@@ -1,5 +1,7 @@
 # switch-kpm-ips-patches
-IPS patches for the Nintendo Switch version of Kotor 1 &amp; 2, adapted from LaneDibello's [Kotor-Patch-Manager](https://github.com/LaneDibello/Kotor-Patch-Manager) patches
+IPS patches for the Nintendo Switch version of Kotor 1 &amp; 2, adapted from LaneDibello's [Kotor-Patch-Manager](https://github.com/LaneDibello/Kotor-Patch-Manager) patches.
+
+Many of the patches don't need to be ported to the Switch because the Switch version already fixed the problem, such as the 4GBPatch, or because the patch just isn't applicable to the Switch, such as ExplandedKeyboardControl. I'm also not porting things like Snake, although it's funny, I don't think it's necessary to have.
 
 ### Installation
 **You must have custom firmware running on your Switch, or be using an emulator.**
