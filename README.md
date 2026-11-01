@@ -14,91 +14,91 @@ To uninstall, delete the folder.
 |:---:|:---|
 | ✅ | Ported and working |
 | 🚧 | In progress |
-| ⬜ | Planning to port |
-| ❌ | Not planning to port |
+| ❌ | Planning to port |
+| ⬜ | Not planning to port |
 
 ### Kotor 1
 | Status | Patch Name | Notes |
 |:---:|:---|:---|
-| ❌ | 4GBPatch | |
-| ❌ | AdditionalConsoleCommands | |
-| ❌ | Alt Tab Patch | |
-| ⬜ | AppearanceBodyVariations | |
-| ❌ | BorderlessFullscreen | |
-| ❌ | CubeMapFix | |
-| ⬜ | DialogueRepliesPast9 | |
-| ⬜ | EnableScriptAurPostString | |
-| ❌ | ExpandedKeyboardControl | |
-| ⬜ | ExpandedVanillaOptions | |
-| ⬜ | FairPazaakTurnOrder | |
-| ❌ | FrameLimiter | |
-| ⬜ | GrassMemorySafety | |
-| ⬜ | GrassRenderFix | |
-| ❌ | K1GUITests | |
-| ⬜ | K1K2PartyTransitionRule | |
-| ⬜ | K1MarkedEmptyContainers | |
-| ⬜ | K1PazaakK2Speed | |
-| ⬜ | K1SecurityDemolitionsXP | |
-| ⬜ | K1SecuritySpikes | |
-| ⬜ | K1SkillPointsIntModFix | |
-| ⬜ | K1StrayBugFixes | |
-| ❌ | K1WidescreenPatch | |
-| ⬜ | LevelUpLimit | |
-| ⬜ | Map Texture Patch | |
-| ❌ | ModOptions | |
-| ❌ | MorePlaceablesIn2DA | |
-| ❌ | Movie Patch | |
-| ⬜ | PartyRosterLimit32K1 | |
-| ❌ | PlanetsLimit | |
-| ❌ | Post-Combat Movement Fix | |
-| ⬜ | Referenced Model Stealth Fix | |
-| ⬜ | SaberThrowSFX | |
-| ⬜ | SaveGameMemoryLeak | |
-| ❌ | ScriptExtender | |
-| ⬜ | SemiTransparentLetterbox | |
-| ❌ | ShaderDebug | |
-| ❌ | ShipBuildFalse | |
-| ❌ | Snake | |
-| ❌ | SoftShadowsFix | |
-| ⬜ | StoreConfirmThreshold2500 | |
-| ⬜ | StoreNoConfirmThreshold | |
-| ⬜ | TextureBucketSafety | |
+| ⬜ | 4GBPatch | |
+| ⬜ | AdditionalConsoleCommands | |
+| ⬜ | Alt Tab Patch | |
+| ❌ | AppearanceBodyVariations | |
+| ⬜ | BorderlessFullscreen | |
+| ⬜ | CubeMapFix | |
+| ❌ | DialogueRepliesPast9 | |
+| ❌ | EnableScriptAurPostString | |
+| ⬜ | ExpandedKeyboardControl | |
+| ❌ | ExpandedVanillaOptions | |
+| ❌ | FairPazaakTurnOrder | |
+| ⬜ | FrameLimiter | |
+| ❌ | GrassMemorySafety | |
+| ❌ | GrassRenderFix | |
+| ⬜ | K1GUITests | |
+| ❌ | K1K2PartyTransitionRule | |
+| ❌ | K1MarkedEmptyContainers | |
+| ❌ | K1PazaakK2Speed | |
+| ❌ | K1SecurityDemolitionsXP | |
+| ❌ | K1SecuritySpikes | |
+| ❌ | K1SkillPointsIntModFix | |
+| ❌ | K1StrayBugFixes | |
+| ⬜ | K1WidescreenPatch | |
+| ❌ | LevelUpLimit | |
+| ❌ | Map Texture Patch | |
+| ⬜ | ModOptions | |
+| ⬜ | MorePlaceablesIn2DA | |
+| ⬜ | Movie Patch | |
+| ❌ | PartyRosterLimit32K1 | |
+| ⬜ | PlanetsLimit | |
+| ⬜ | Post-Combat Movement Fix | |
+| ❌ | Referenced Model Stealth Fix | |
+| ❌ | SaberThrowSFX | |
+| ❌ | SaveGameMemoryLeak | |
+| ⬜ | ScriptExtender | |
+| ❌ | SemiTransparentLetterbox | |
+| ⬜ | ShaderDebug | |
+| ⬜ | ShipBuildFalse | |
+| ⬜ | Snake | |
+| ⬜ | SoftShadowsFix | |
+| ❌ | StoreConfirmThreshold2500 | |
+| ❌ | StoreNoConfirmThreshold | |
+| ❌ | TextureBucketSafety | |
 
 ### Kotor 2
 | Status | Patch Name | Notes |
 |:---:|:---|:---|
-| ❌ | 4GBPatch | |
-| ❌ | AdditionalConsoleCommands | |
-| ⬜ | AuroraAnimationBank | |
-| ❌ | BorderlessFullscreen | |
-| ❌ | DeSteamify | |
-| ❌ | EnableCheats | |
-| ❌ | ExpandedKeyboardControl | |
-| ⬜ | FullPartySelect | |
-| ⬜ | GoodAlignmentHeads | |
-| ⬜ | K2AntiSkipPatch | |
-| ⬜ | K2AspyrColorCorrection | |
-| ❌ | K2AspyrControllerFixes | |
-| ⬜ | K2AspyrFogReflectionFix | |
-| ⬜ | K2AspyrLoadingScreenLineFix | |
-| ⬜ | K2AspyrMapAspectFix | |
+| ⬜ | 4GBPatch | |
+| ⬜ | AdditionalConsoleCommands | |
+| ❌ | AuroraAnimationBank | |
+| ⬜ | BorderlessFullscreen | |
+| ⬜ | DeSteamify | |
+| ⬜ | EnableCheats | |
+| ⬜ | ExpandedKeyboardControl | |
+| ❌ | FullPartySelect | |
+| ❌ | GoodAlignmentHeads | |
+| ❌ | K2AntiSkipPatch | |
+| ❌ | K2AspyrColorCorrection | |
+| ⬜ | K2AspyrControllerFixes | |
+| ❌ | K2AspyrFogReflectionFix | |
+| ❌ | K2AspyrLoadingScreenLineFix | |
+| ❌ | K2AspyrMapAspectFix | |
 | ✅ | K2AspyrMusicFix | |
-| ⬜ | K2AspyrNormalMapsFix | |
-| ⬜ | K2AspyrSaberTextureFix | |
+| ❌ | K2AspyrNormalMapsFix | |
+| ❌ | K2AspyrSaberTextureFix | |
 | 🚧 | K2AspyrShaderFixes | |
-| ❌ | K2AspyrVisibleConsole | |
-| ❌ | K2AspyrWindowingFixes | |
-| ❌ | K2ClassMenuClothes | |
+| ⬜ | K2AspyrVisibleConsole | |
+| ⬜ | K2AspyrWindowingFixes | |
+| ⬜ | K2ClassMenuClothes | |
 | ✅ | K2FinesseMeleeFix | |
-| ⬜ | K2GrassFogFix | |
-| ❌ | K2MP3PlaybackFix | |
-| ⬜ | Max Lights | |
-| ❌ | Movie Patch | |
-| ⬜ | PartyRosterLimit32K2 | |
-| ❌ | Post-Combat Movement Fix | |
-| ⬜ | Referenced Model Stealth Fix | |
-| ⬜ | SaberThrowSFX | |
+| ❌ | K2GrassFogFix | |
+| ⬜ | K2MP3PlaybackFix | |
+| ❌ | Max Lights | |
+| ⬜ | Movie Patch | |
+| ❌ | PartyRosterLimit32K2 | |
+| ⬜ | Post-Combat Movement Fix | |
+| ❌ | Referenced Model Stealth Fix | |
+| ❌ | SaberThrowSFX | |
 | 🚧 | SemiTransparentLetterbox | |
-| ❌ | ShaderDebug | |
+| ⬜ | ShaderDebug | |
 | 🚧 | StoreConfirmThreshold2500 | Currently works with selling, but not buying |
-| ⬜ | StoreNoConfirmThreshold | |
+| ❌ | StoreNoConfirmThreshold | |
