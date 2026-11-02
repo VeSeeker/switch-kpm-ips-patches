@@ -106,5 +106,5 @@ To uninstall, delete the folder.
 | ❌ | SaberThrowSFX | |
 | 🚧 | SemiTransparentLetterbox | |
 | ⬜ | ShaderDebug | |
-| 🚧 | StoreConfirmThreshold2500 | Currently works with selling, but not buying |
+| ✅ | StoreConfirmThreshold2500 | |
 | ❌ | StoreNoConfirmThreshold | |
