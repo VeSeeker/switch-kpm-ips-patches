@@ -3,7 +3,7 @@ IPS patches for the Nintendo Switch version of Kotor 1 &amp; 2, adapted from Lan
 
 Many of the patches don't need to be ported to the Switch because the Switch version already fixes the problem, such as the 4GBPatch, or because the patch just isn't applicable to the Switch, such as ExpandedKeyboardControl. I'm also not porting things like Snake, although it's funny, I don't think it's necessary to have.
 
-I also include Switch-specific fixes. Most notably the AnimatedTextureFix for both games. This bug has to do with mipmaps, where the highest quality map wouldnt' appear animated. See an example [here](https://youtu.be/CmlEmN5rivw). 
+I also include Switch-specific fixes. Most notably the AnimatedTextureFix for both games. This bug has to do with mipmaps, where the highest quality map wouldnt' appear animated. See an example [here](https://youtu.be/CmlEmN5rivw). The patches fix this for each game, so animated textures work perfectly.
 
 ### Installation
 **You must have custom firmware running on your Switch, or be using an emulator.**
