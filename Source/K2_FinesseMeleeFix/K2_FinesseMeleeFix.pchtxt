@@ -6,6 +6,9 @@
 
 // Original x86 patch author: Vriff
 
+// Target game: Kotor 2
+// Target version: 1.0.4
+
 // Fixes KOTOR2 Aspyr's GetWeaponFinesse fallthrough so Finesse: Melee
 // Weapons no longer grants Dexterity attack bonus with lightsabers
 
