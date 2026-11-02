@@ -27,7 +27,7 @@ To uninstall, delete the folder.
 | ⬜ | 4GBPatch | |
 | ⬜ | AdditionalConsoleCommands | |
 | ⬜ | Alt Tab Patch | |
-| ✅ | Animated Texture Fix | | Switch-specific patch |
+| ✅ | Animated Texture Fix | Switch-specific patch |
 | ❌ | AppearanceBodyVariations | |
 | ⬜ | BorderlessFullscreen | |
 | ⬜ | CubeMapFix | |
@@ -74,7 +74,7 @@ To uninstall, delete the folder.
 |:---:|:---|:---|
 | ⬜ | 4GBPatch | |
 | ⬜ | AdditionalConsoleCommands | |
-| ✅ | Animated Texture Fix | | Switch-specific patch |
+| ✅ | Animated Texture Fix | Switch-specific patch |
 | ❌ | AuroraAnimationBank | |
 | ⬜ | BorderlessFullscreen | |
 | ⬜ | DeSteamify | |
