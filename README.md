@@ -8,7 +8,7 @@ I also include Switch-specific fixes. Most notably the AnimatedTextureFix for bo
 ### Installation
 **You must have custom firmware running on your Switch, or be using an emulator.**
 
-Move the patches you want to install into /atmosphere/exefs_patches/ on your Switch or emulator. Move the folder with the .ips file in it, not just the .ips file. 
+Move the patches you want to install into /atmosphere/exefs_patches/ on your Switch or emulator. Move the entire folder with the .ips file in it, not just the .ips file. 
 To uninstall, delete the folder.
 
 ## Patch Status
