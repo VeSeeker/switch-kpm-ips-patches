@@ -3,12 +3,12 @@ IPS patches for the Nintendo Switch version of Kotor 1 &amp; 2, adapted from Lan
 
 Many of the patches don't need to be ported to the Switch because the Switch version already fixes the problem, such as the 4GBPatch, or because the patch just isn't applicable to the Switch, such as ExpandedKeyboardControl. I'm also not porting things like Snake, although it's funny, I don't think it's necessary to have.
 
-I also include Switch-specific fixes. Most notably the AnimatedTextureFix for both games. This bug has to do with mipmaps, where the highest quality map wouldnt' appear animated. See an example [here](https://youtu.be/CmlEmN5rivw). 
+I also include Switch-specific fixes. Most notably the AnimatedTextureFix for both games. These patches fix a bug that has to do with mipmaps, where the highest quality map wouldn't appear animated depending on your distance from the texture. See an example [here](https://youtu.be/CmlEmN5rivw). My patches fix this, so the textures appear animated regardless of your distance from them.
 
 ### Installation
 **You must have custom firmware running on your Switch, or be using an emulator.**
 
-Move the patches you want to install into /atmosphere/exefs_patches/ on your Switch or emulator. Move the folder with the .ips file in it, not just the .ips file. 
+Move the patches you want to install into /atmosphere/exefs_patches/ on your Switch or emulator. Move the entire folder with the .ips file in it, not just the .ips file. 
 To uninstall, delete the folder.
 
 ## Patch Status
@@ -16,7 +16,7 @@ To uninstall, delete the folder.
 #### Status key
 | Symbol | Meaning |
 |:---:|:---|
-| ✅ | Ported and working |
+| ✅ | Patched and working |
 | 🚧 | In progress |
 | ❌ | Planning to port |
 | ⬜ | Not planning to port |
