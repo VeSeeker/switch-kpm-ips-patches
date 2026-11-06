@@ -4,8 +4,9 @@
 
 @enabled
 
-// Target game: Kotor 2
-// Target version: 1.0.4
+// AnimatedTextureFix
+
+// Target game: Kotor 2 (Switch 1.0.4)
 
 // Fixes a bug unique to the Switch version where the highest quality
 // mipmap wouldn't appear animated

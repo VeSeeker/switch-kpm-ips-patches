@@ -6,8 +6,9 @@
 
 // Original x86 patch author: Vriff
 
-// Target game: Kotor 2
-// Target version: 1.0.4
+// StoreConfirmThreshold2500
+
+// Target game: Kotor 2 (Switch 1.0.4)
 
 // Changes store expensive-time confirmations so both buying and selling
 // use a fixed 2500-credit prompt threshold

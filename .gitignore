@@ -1,1 +1,8 @@
+# The base PC patches
 Base_Patches/
+
+# Notebook for checking new patches
+*.ipynb
+
+# Release zip
+*.zip

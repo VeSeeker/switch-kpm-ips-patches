@@ -1,0 +1,38 @@
+@nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: J
+
+// GrassFogFix
+
+// Target game: Kotor 2 (Switch 1.0.4)
+
+// Fixes grass changing color at certain angles
+// Implemented with a trampoline in the tail of .text
+
+//   0x71005F0AC0  mov x0, x20        ; Scene* (x20 = param_1)
+//   0x71005F0AC4  bl 0x7100195364    ; Scene::DoFog
+//   0x71005F0AC8  fmov s0, wzr       ; original instruction at 0x710018F1B8
+//   0x71005F0ACC  b 0x710018F1BC     ; return to original color setup
+//
+// 0x710018F1B8: fmov s0,wzr (e0 03 27 1e) -> bl 0x71005F0AC0 (42 86 11 94)
+// 0x71005F0AC0: 16 zero bytes           -> trampoline (16 bytes)
+//
+// 0x71005F0AC0 lies between the end of the NSO text segment (0x71005F0AB0)
+// and .rodata (0x71005F1000).  Atmosphere's loader zeroes this gap and maps
+// the whole final text page read-execute before applying exefs IPS patches.
+
+// Original:
+//  0018f1b8 E0 03 27 1E    fmov s0,wzr
+
+// Replacement:
+0018f1b8 42861194       //  bl 0x71005f0ac0
+
+005f0ac0 e00314aa2892ee97e003271ebc79ee17
+//  mov 0x,x20
+//  bl 0x7100195364
+//  fmov s0,wzr
+//  b 0x710018fbc

@@ -6,8 +6,9 @@
 
 // Original x86 patch author: J
 
-// Target game: Kotor 2
-// Target version: 1.0.4
+// AspyrMusicFix
+
+// Target game: Kotor 2 (Switch 1.0.4)
 
 // Disables audio ducking feature that causes music to be too quiet
 // during dialogue
