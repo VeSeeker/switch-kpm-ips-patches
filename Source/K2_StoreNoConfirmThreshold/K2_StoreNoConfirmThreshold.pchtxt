@@ -1,0 +1,34 @@
+@nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: Vriff
+
+// StoreNoConfirmThreshold
+
+// Target game: Kotor 2 (Switch 1.0.4)
+
+// Removes store confirmation popups for expensive item buying and selling
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiStore::OnControlInvAButton (0x710034330C)
+
+// Original:
+//  0034364C A9 09 00 54    b.ls 0x7100343780
+
+// Replacement:
+0034364c 4d000014       //  b 0x7100343780
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiStore::OnControlStoreAButton (0x7100343DF0)
+
+// Original:
+//  00343FF8 89 0A 00 54    b.ls 0x7100344148
+// Replacement:
+00343ff8 54000014       //  b 0x7100344148
+
+// ---------------------------------------------------------------------------

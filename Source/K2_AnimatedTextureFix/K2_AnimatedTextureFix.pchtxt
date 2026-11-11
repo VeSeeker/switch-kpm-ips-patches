@@ -11,9 +11,9 @@
 // Fixes a bug unique to the Switch version where the highest quality
 // mipmap wouldn't appear animated
 
+// ---------------------------------------------------------------------------
 
-// Preserve the non-power-of-two sampler condition without ORing in the
-// animated flag
+// GLRender::CreateTexture (0x710011A028)
 
 // Original:
 // 0011a480 18 01 18 2A     orr w24,w8,w24
@@ -21,11 +21,14 @@
 // Replacement:
 0011a480 f803082a       //  mov w24,w8
 
+// ---------------------------------------------------------------------------
 
-// Compressed path: use the selected animation frame for the base mip upload
+// GLRender::CreateProcessedTexture (0x710011AA70)
 
 // Original:
 //  0011ae78 E0 07 40 F9    ldr param_1,[sp,#local_a8]
 
 // Replacement:
 0011ae78 e00317aa       //  mov param_1,x23
+
+// ---------------------------------------------------------------------------

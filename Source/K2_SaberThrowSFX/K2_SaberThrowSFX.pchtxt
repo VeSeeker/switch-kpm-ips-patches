@@ -1,0 +1,51 @@
+@nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: Vriff
+
+// SaberThrowSFX
+
+// Target game: Kotor 2 (Switch 1.0.4)
+
+// Saber Throw flight audio using sbr_throw. Overrides projectile's
+// looping flight sound.
+
+// ---------------------------------------------------------------------------
+
+// CSWCVisualEffectOnObject::ApplyLightsaberThrow (0x710028E214)
+
+// Original:
+//  0028E368 94 CD FF 97    bl 0x71002819B8
+//  0028E36C C8 06 40 F9    ldr x8,[x22,#0x8]
+//  0028E370 00 03 06 91    add param_1,x24,#0x180
+//  0028E374 A8 1E 01 F9    str x8,[x21,#0x238]
+
+// Replacement:
+0028e368 da890d14       //  b 0x71005F0AD0
+0028e36c 1f2003d5       //  nop
+0028e370 1f2003d5       //  nop
+0028e374 1f2003d5       //  nop
+
+// ---------------------------------------------------------------------------
+
+// ApplyLightsaberThrow code cave (0x71005F0AD0)
+
+005f0ad0 9743f2ba       //  bl 0x71002819b8
+005f0ad4 528c4e68       //  mov w8,#0x6273
+005f0ad8 72abee48       //  movk w8,#0x5f72,lsl #16
+005f0adc b9018aa8       //  str w8,[x21,#0x188]
+005f0ae0 528d0e88       //  mov w8,#0x6874
+005f0ae4 72adee48       //  movk w8,#0x6f72,lsl #16
+005f0ae8 b9018ea8       //  str w8,[x21,#0x18c]
+005f0aec 52800ee8       //  mov w8,#0x77
+005f0af0 b90192a8       //  str w8,[x21,#0x190]
+005f0af4 b90196bf       //  str wzr,[x21,#0x194]
+005f0af8 f94006c8       //  ldr x8,[x22,#0x8]
+005f0afc 91060300       //  add x0,x24,#0x180
+005f0b00 f9011ea8       //  str x8,[x21,#0x238]
+005f0b04 17f2761d       //  b 0x710028e378
+
+// ---------------------------------------------------------------------------

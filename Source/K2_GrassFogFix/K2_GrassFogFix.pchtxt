@@ -11,19 +11,10 @@
 // Target game: Kotor 2 (Switch 1.0.4)
 
 // Fixes grass changing color at certain angles
-// Implemented with a trampoline in the tail of .text
 
-//   0x71005F0AC0  mov x0, x20        ; Scene* (x20 = param_1)
-//   0x71005F0AC4  bl 0x7100195364    ; Scene::DoFog
-//   0x71005F0AC8  fmov s0, wzr       ; original instruction at 0x710018F1B8
-//   0x71005F0ACC  b 0x710018F1BC     ; return to original color setup
-//
-// 0x710018F1B8: fmov s0,wzr (e0 03 27 1e) -> bl 0x71005F0AC0 (42 86 11 94)
-// 0x71005F0AC0: 16 zero bytes           -> trampoline (16 bytes)
-//
-// 0x71005F0AC0 lies between the end of the NSO text segment (0x71005F0AB0)
-// and .rodata (0x71005F1000).  Atmosphere's loader zeroes this gap and maps
-// the whole final text page read-execute before applying exefs IPS patches.
+// ---------------------------------------------------------------------------
+
+// Scene::DoBinBucket (0x710018F038)
 
 // Original:
 //  0018f1b8 E0 03 27 1E    fmov s0,wzr
@@ -31,8 +22,13 @@
 // Replacement:
 0018f1b8 42861194       //  bl 0x71005f0ac0
 
-005f0ac0 e00314aa2892ee97e003271ebc79ee17
-//  mov 0x,x20
-//  bl 0x7100195364
-//  fmov s0,wzr
-//  b 0x710018fbc
+// ---------------------------------------------------------------------------
+
+// DoBinBucket code cave (0x71005F0AC0) (16 bytes)
+
+005f0ac0 aa1403e0       //  mov x0, x20
+005f0ac4 97ee9228       //  bl 0x7100195364
+005f0ac8 1e2703e0       //  fmov s0, wzr
+005f0acc 17ee79bc       //  b 0x710018f1bc
+
+// ---------------------------------------------------------------------------

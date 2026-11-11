@@ -13,8 +13,14 @@
 // Disables audio ducking feature that causes music to be too quiet
 // during dialogue
 
+// ---------------------------------------------------------------------------
+
+// CExoStreamingSoundSourceInternal::SetVolume (0x71003B5D90)
+
 // Original:
 //  003b5ea4 00 08 21 1E    fmul s0,s0,s1
 
 // Replacement:
 003b5ea4 1f2003d5       //  nop
+
+// ---------------------------------------------------------------------------

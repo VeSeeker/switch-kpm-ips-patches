@@ -13,8 +13,14 @@
 // Fixes KOTOR2 Aspyr's GetWeaponFinesse fallthrough so Finesse: Melee
 // Weapons no longer grants Dexterity attack bonus with lightsabers
 
+// ---------------------------------------------------------------------------
+
+// CSWSCreatureStats::DecrementFeatRemainingUses (0x710044FFB8)
+
 // Original:
 //  00450094 21 03 00 54    b.ne 0x71004500F8
 
 // Replacement:
 00450094 19000014       //  b 0x71004500F8
+
+// ---------------------------------------------------------------------------

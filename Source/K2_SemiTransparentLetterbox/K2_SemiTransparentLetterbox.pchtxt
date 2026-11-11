@@ -1,0 +1,68 @@
+@nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: Vriff
+
+// Semi-TransparentLetterbox
+
+// Target game: Kotor 2 (Switch 1.0.4)
+
+// Changes the dialogue letterbox alpha from 1.0 (opaque) to 0.5
+// (semi-transparent)
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiDialogLetterbox::CSWGuiDialogLetterbox (0x71002AA920)
+
+// Original:
+//  002AA964  00 10 2E 1E   fmov s0,#1.0
+//  ...
+//  002AA978  E1 03 27 1E   fmov s1,wzr
+
+// Replacement:
+002aa964 00102c1e       //  fmov s0,#0.5
+002aa978 01102c1e       //  fmov s1,#0.5
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiDialogLetterbox::ResetFade (0x71002AA9C0)
+
+// Original:
+//  002AA9C4  00 10 2E 1E  fmov s0,#1.0
+
+// Replacement:
+002aa9c4 00102c1e       //  fmov s0,#0.5
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiDialogLetterbox::SetFade (0x71002AAD60)
+
+// Original:
+//  002AAD60  02 10 2e 1e   fmov s2,#1.0
+
+// Replacement:
+002aad60 02102c1e       //  fmov s2,#0.5
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiDialogLetterbox::Draw (0x71002AADC4)
+
+// Original:
+//  002AAE4C  60 62 00 BD   str s0,[x19,#0x60]
+
+// Replacement:
+002aae4c 43170d14       //  b 0x71005F0B58
+
+// ---------------------------------------------------------------------------
+
+// Draw code cave (0x71005F0B58) (16 bytes)
+
+005f0b58 04102c1e       //  fmov s4,#0.5
+005f0b5c 0008241e       //  fmul s0,s0,s4
+005f0b60 606200bd       //  str s0,[x19,#0x60]
+005f0b64 bbe8f217       //  b 0x71002AAE50
+
+// ---------------------------------------------------------------------------

@@ -1,16 +1,29 @@
 # switch-kpm-ips-patches
 IPS patches for the Nintendo Switch version of Kotor 1 &amp; 2, adapted from LaneDibello's [Kotor-Patch-Manager](https://github.com/LaneDibello/Kotor-Patch-Manager) patches.
 
-Many of the patches don't need to be ported to the Switch because the Switch version already fixes the problem, such as the 4GBPatch, or because the patch just isn't applicable to the Switch, such as ExpandedKeyboardControl. I'm also not porting things like Snake because although it's funny, I don't think it's necessary to have.
+Many of the patches in KPM don't need to be ported to the Switch because the Switch version already fixes the problem, such as the 4GBPatch, or because the patch just isn't applicable to the Switch, such as ExpandedKeyboardControl. I'm also not porting things like Snake because, although it's funny, I don't think it's necessary to have.
 
-I also include Switch-specific fixes, for problems unique to the Switch versions of the games.
+I also include Switch-specific fixes, for problems unique to the Switch versions of the games, such as the AnimatedTextureFix for both games.
 
 ### Installation
 **You must have custom firmware running on your Switch, or be using an emulator.**
 **The patches are made for the latest versions of the games, 1.0.4 for both. They will not work on any other version of the game**
 
-Move the patches you want to install into /atmosphere/exefs_patches/ on your Switch or emulator. Move the entire folder with the .ips file in it, not just the .ips file. 
-To uninstall, delete the folder.
+#### Switch
+Move the patches you want to install into /atmosphere/exefs_patches/ on your Switch. File structure should be:
+```
+atmosphere/exefs_patches/{PatchName}/{BID}.ips
+```
+
+#### Emulator
+May vary depending on emulator. For eden, the file structure should be:
+```
+eden/load/{TitleID}/{PatchName}/exefs/{BID}.ips
+```
+So you will have to add the ```exefs``` folder.
+
+#### Uninstall
+Simply delete the folder.
 
 ## Patch Status
 
@@ -18,7 +31,6 @@ To uninstall, delete the folder.
 | Symbol | Meaning |
 |:---:|:---|
 | ✅ | Patched and working |
-| 🚧 | In progress |
 | ❌ | Planning to port |
 | ⬜ | Not planning to port |
 
@@ -28,7 +40,7 @@ To uninstall, delete the folder.
 | ⬜ | 4GBPatch | The Switch has 4GB of unified memory, and the game already uses all of it that it can |
 | ⬜ | AdditionalConsoleCommands | You can access console commands on the Switch, however I don't see the need for implementing this patch as of now |
 | ⬜ | Alt Tab Patch |  |
-| ✅ | Animated Texture Fix | Switch-specific patch. Fixes a bug where the highest quality mipmap of animated textures wouldn't actually be animated. [Example](https://youtu.be/CmlEmN5rivw) |
+| ✅ | AnimatedTextureFix | Switch-specific patch. Fixes a bug where the highest quality mipmap of animated textures wouldn't actually be animated. [Example](https://youtu.be/CmlEmN5rivw) |
 | ❌ | AppearanceBodyVariations | |
 | ⬜ | BorderlessFullscreen |  |
 | ⬜ | CubeMapFix |  |
@@ -75,7 +87,7 @@ To uninstall, delete the folder.
 |:---:|:---|:---|
 | ⬜ | 4GBPatch | The Switch has 4GB of unified memory, and the game already uses all of it that it can |
 | ⬜ | AdditionalConsoleCommands | You can access console commands on the Switch, however I don't see the need for implementing this patch as of now |
-| ✅ | Animated Texture Fix | Switch-specific patch. Fixes a bug where the highest quality mipmap of animated textures wouldn't actually be animated. [Example](https://youtu.be/CmlEmN5rivw)|
+| ✅ | AnimatedTextureFix | Switch-specific patch. Fixes a bug where the highest quality mipmap of animated textures wouldn't actually be animated. [Example](https://youtu.be/CmlEmN5rivw)|
 | ❌ | AuroraAnimationBank | |
 | ⬜ | BorderlessFullscreen | |
 | ⬜ | DeSteamify | |
@@ -92,20 +104,20 @@ To uninstall, delete the folder.
 | ✅ | K2AspyrMusicFix | |
 | ⬜ | K2AspyrNormalMapsFix | |
 | ❌ | K2AspyrSaberTextureFix | TODO: Confirm Switch logic matches PC for this patch |
-| 🚧 | K2AspyrShaderFixes | |
+| ❌ | K2AspyrShaderFixes | |
 | ⬜ | K2AspyrVisibleConsole | |
 | ⬜ | K2AspyrWindowingFixes | |
 | ⬜ | K2ClassMenuClothes | |
 | ✅ | K2FinesseMeleeFix | |
 | ✅ | K2GrassFogFix | |
 | ⬜ | K2MP3PlaybackFix | |
-| ❌ | Max Lights | |
+| ✅ | Max Lights | TODO: Look into precompiled shader fixes along with this exefs patch |
 | ⬜ | Movie Patch | |
 | ⬜ | PartyRosterLimit32K2 | |
 | ⬜ | Post-Combat Movement Fix | |
-| ❌ | Referenced Model Stealth Fix | TODO: Figure out what this patch does |
-| ❌ | SaberThrowSFX | TODO: Confirm Switch logic matches PC for this patch |
-| 🚧 | SemiTransparentLetterbox | |
+| ❌ | Referenced Model Stealth Fix | TODO: Confirm Switch logic matches PC for this patch |
+| ✅ | SaberThrowSFX | |
+| ✅ | SemiTransparentLetterbox | |
 | ⬜ | ShaderDebug | |
 | ✅ | StoreConfirmThreshold2500 | |
-| ❌ | StoreNoConfirmThreshold | |
+| ✅ | StoreNoConfirmThreshold | |
