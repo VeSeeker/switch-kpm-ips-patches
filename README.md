@@ -96,7 +96,7 @@ Simply delete the folder.
 | ❌ | FullPartySelect | TODO: Create Switch version of partyselect_p.gui for this patch |
 | ✅ | GoodAlignmentHeads | |
 | ⬜ | K2AntiSkipPatch | |
-| ❌ | K2AspyrColorCorrection | |
+| ✅ | K2AspyrColorCorrection | |
 | ⬜ | K2AspyrControllerFixes | |
 | ❌ | K2AspyrFogReflectionFix | Fog is already enabled on the Switch version TODO: Confirm if reflection logic matches PC and needs patch |
 | ❌ | K2AspyrLoadingScreenLineFix | TODO: Confirm Switch logic matches PC for this patch |

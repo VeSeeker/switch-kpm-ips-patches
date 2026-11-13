@@ -1,0 +1,65 @@
+@nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: Unknown
+
+// K2AspyrColorCorrection
+
+// Target game: Kotor 2 (Switch 1.0.4)
+
+// Adjusts color to remove the yellow tint added by the Aspyr update.
+
+// ---------------------------------------------------------------------------
+
+// CAurInternal::ResetGammaRamp (0x71001383A0)
+
+// Original:
+//  001383DC  60 02 22 1E   scvtf s0,w19
+
+// Replacement:
+001383dc e3e11214       //  b 0x71005f0b68
+
+// ---------------------------------------------------------------------------
+
+// ResetGammaRamp code cave (0x71005F0B68) (140 bytes)
+
+005f0b68 ff4300d1       //  sub sp,sp,#0x10
+005f0b6c eb33006d       //  stp d11,d12,[sp]
+005f0b70 eb03001c       //  ldr s11,[pc,#0x7c]
+005f0b74 ec03001c       //  ldr s12,[pc,#0x7c]
+005f0b78 ca02271e       //  fmov s10,w22
+005f0b7c a102271e       //  fmov s1,w21
+005f0b80 6002221e       //  scvtf s0,w19
+005f0b84 0908211e       //  fmul s9,s0,s1
+005f0b88 20092b1e       //  fmul s0,s9,s11
+005f0b8c 011da84e       //  mov v1.16b,v8.16b
+005f0b90 24feff97       //  bl 0x71005f0420
+005f0b94 00082a1e       //  fmul s0,s0,s10
+005f0b98 0800381e       //  fcvtzs w8,s0
+005f0b9c 88020079       //  strh w8,[x20]
+005f0ba0 20092c1e       //  fmul s0,s9,s12
+005f0ba4 011da84e       //  mov v1.16b,v8.16b
+005f0ba8 1efeff97       //  bl 0x71005f0420
+005f0bac 00082a1e       //  fmul s0,s0,s10
+005f0bb0 0800381e       //  fcvtzs w8,s0
+005f0bb4 88020479       //  strh w8,[x20,#0x200]
+005f0bb8 20092b1e       //  fmul s0,s9,s11
+005f0bbc 011da84e       //  mov v1.16b,v8.16b
+005f0bc0 18feff97       //  bl 0x71005f0420
+005f0bc4 01082a1e       //  fmul s1,s0,s10
+005f0bc8 2800381e       //  fcvtzs w8,s1
+005f0bcc 73060091       //  add x19,x19,#1
+005f0bd0 7f0204f1       //  cmp x19,#0x100
+005f0bd4 88020879       //  strh w8,[x20,#0x400]
+005f0bd8 940a0091       //  add x20,x20,#2
+005f0bdc 01fdff54       //  b.ne 0x71005f0b7c
+005f0be0 eb33406d       //  ldp d11,d12,[sp]
+005f0be4 ff430091       //  add sp,sp,#0x10
+005f0be8 171eed17       //  b 0x7100138444
+005f0bec 6666663f       //  .word 0x3f666666
+005f0bf0 9a99593f       //  .word 0x3f59999a
+
+// ---------------------------------------------------------------------------
