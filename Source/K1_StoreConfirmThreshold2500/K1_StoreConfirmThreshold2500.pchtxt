@@ -1,0 +1,45 @@
+@nsobid-814D285CFA9F4AADC0E8BC151AE3B5EE25F60E5A000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: Vriff
+
+// StoreConfirmThreshold2500
+
+// Target game: Kotor 1 (Switch 1.0.4)
+
+// Changes store expensive-item confirmations so both buying and selling
+// use a fixed 2500-credit prompt threshold
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiStore::OnControlInvAButton (0x71003179BC)
+
+// Original:
+//  00317a60 57 06 80 52    mov w23,#0x32
+//  00317a64 08 7D 17 1B    mul w8,w8,w23
+//  00317a68 1F E9 03 71    cmp w8,#0xfa
+//  00317a6c 69 00 00 54    b.ls 0x7100317a78
+//  00317a70 56 1F 80 52    mov w22,#0xfa
+
+// Replacement:
+00317a6c 1f2003d5       //  nop
+00317a70 96388152       //  mov w22,#0x9c4
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiStore::OnControlStoreAButton (0x7100317C60)
+
+// Original:
+//  00317d60 56 06 80 52    mov w22,#0x32
+//  00317d64 C0 00 00 B4    cbz x0,0x7100317d7c
+//  ...
+//  00317d78 16 7D 16 1B    mul w22,w8,w22
+
+// Replacement:
+00317d60 96388152       //  mov w22,#0x9c4
+00317d78 1f2003d5       //  nop
+
+// ---------------------------------------------------------------------------

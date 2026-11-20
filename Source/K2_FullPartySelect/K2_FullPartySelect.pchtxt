@@ -1,0 +1,32 @@
+@nsobid-4F74555E341A5F33081F86952D1CF229FB567BD6000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: Vriff
+
+// FullPartySelect
+
+// Target game: Kotor 2 (Switch 1.0.4)
+
+// Disables the shared-slot collapse for Hanharr/Mira and
+// Handmaiden/Disciple in the party-selection screen. Install
+// partyselect_x.GUI from "Additional Files/K2 FullPartySelect" in the
+// game's override folder to expose all 12 party slots.
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiPartySelection::OnPanelAdded (0x710031C1F0)
+
+// The only call to CSWGuiPartySelection::UpdateVisibleCharacters
+// (FUN_710031C758) is replaced with a NOP, so the 12 party slots are
+// not collapsed back into the stock shared-slot layout.
+
+// Original:
+//  0031C39C EF 00 00 94    bl 0x710031C758
+
+// Replacement:
+0031c39c 1f2003d5       //  nop
+
+// ---------------------------------------------------------------------------

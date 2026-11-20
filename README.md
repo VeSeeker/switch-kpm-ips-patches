@@ -9,6 +9,8 @@ I also include Switch-specific fixes, for problems unique to the Switch versions
 **You must have custom firmware running on your Switch, or be using an emulator.**
 **The patches are made for the latest versions of the games, 1.0.4 for both. They will not work on any other version of the game**
 
+Some patches require additional files. These are provided in the ```Additional Files``` folder. The table below will document which files are needed, and where they should be placed.
+
 #### Switch
 Move the patches you want to install into /atmosphere/exefs_patches/ on your Switch. File structure should be:
 ```
@@ -43,7 +45,7 @@ Simply delete the folder.
 | ✅ | AnimatedTextureFix | Switch-specific patch. Fixes a bug where the highest quality mipmap of animated textures wouldn't actually be animated. [Example](https://youtu.be/CmlEmN5rivw) |
 | ❌ | AppearanceBodyVariations | |
 | ⬜ | BorderlessFullscreen |  |
-| ⬜ | CubeMapFix |  |
+| ⬜ | CubeMapFix | TODO: Check if Switch has this issue |
 | ❌ | DialogueRepliesPast9 | TODO: Confirm Switch logic matches PC for this patch |
 | ❌ | EnableScriptAurPostString | |
 | ⬜ | ExpandedKeyboardControl |  |
@@ -55,7 +57,7 @@ Simply delete the folder.
 | ⬜ | K1GUITests | |
 | ❌ | K1K2PartyTransitionRule | |
 | ❌ | K1MarkedEmptyContainers | |
-| ❌ | K1PazaakK2Speed | |
+| ✅ | K1PazaakK2Speed | Need to test this |
 | ❌ | K1SecurityDemolitionsXP | |
 | ❌ | K1SecuritySpikes | |
 | ❌ | K1SkillPointsIntModFix | |
@@ -77,8 +79,8 @@ Simply delete the folder.
 | ⬜ | ShaderDebug | |
 | ⬜ | ShipBuildFalse | |
 | ⬜ | Snake | |
-| ⬜ | SoftShadowsFix | |
-| ❌ | StoreConfirmThreshold2500 | |
+| ⬜ | SoftShadowsFix | TODO: Check if Switch has this problem |
+| ✅ | StoreConfirmThreshold2500 | |
 | ❌ | StoreNoConfirmThreshold | |
 | ⬜ | TextureBucketSafety | |
 
@@ -93,7 +95,7 @@ Simply delete the folder.
 | ⬜ | DeSteamify | |
 | ⬜ | EnableCheats | |
 | ⬜ | ExpandedKeyboardControl | |
-| ❌ | FullPartySelect | TODO: Create Switch version of partyselect_p.gui for this patch |
+| ✅ | FullPartySelect | TODO: Create Switch version of partyselect_p.gui with correct controller controls |
 | ✅ | GoodAlignmentHeads | |
 | ⬜ | K2AntiSkipPatch | |
 | ✅ | K2AspyrColorCorrection | |
@@ -116,7 +118,7 @@ Simply delete the folder.
 | ⬜ | PartyRosterLimit32K2 | |
 | ⬜ | Post-Combat Movement Fix | |
 | ❌ | Referenced Model Stealth Fix | TODO: Confirm Switch logic matches PC for this patch |
-| ✅ | SaberThrowSFX | |
+| ✅ | SaberThrowSFX | Requires ```sbr_throw.wav``` in override Need to confirm this is where it goes|
 | ✅ | SemiTransparentLetterbox | |
 | ⬜ | ShaderDebug | |
 | ✅ | StoreConfirmThreshold2500 | |

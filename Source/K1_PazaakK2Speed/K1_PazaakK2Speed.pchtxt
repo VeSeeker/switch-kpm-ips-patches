@@ -1,0 +1,61 @@
+@nsobid-814D285CFA9F4AADC0E8BC151AE3B5EE25F60E5A000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// Original x86 patch author: Vriff
+
+// K1 Pazaak K2 Speed
+
+// Target game: KOTOR 1 (Switch 1.0.4)
+
+// Retunes the KOTOR 1 pazaak GUI sequence delays to the shorter KOTOR 2
+// pacing constants: 0.4s -> 0.1s for the state 1->2 and state 6->7
+// transitions, and 0.8s -> 0.2s for the AI draw/use-card delay.
+
+// ---------------------------------------------------------------------------
+
+// CSWGuiPazaakGame::DoGameSequence (0x71002FC1E8)
+
+// The Switch compiler merges the state field (this+0xB198) and the timer
+// field (this+0xB19C) into one 64-bit store. The timer is the high 32 bits
+// of the stored value, so only the movk that supplies 0x3ECC changes.
+
+// State 1 -> 2 lead-in delay: 0.4s -> 0.1s
+
+// Original:
+//  002fc71c 48 00 80 d2    mov x8,#0x2
+//  002fc720 a8 99 d9 f2    movk x8,#0xcccd,lsl #32
+//  002fc724 88 d9 e7 f2    movk x8,#0x3ecc,lsl #48
+//  002fc72c 88 36 0a f9    str x8,[x20,#0x1468]
+
+// Replacement:
+002fc724 88b9e7f2       //  movk x8,#0x3dcc,lsl #48
+
+// ---------------------------------------------------------------------------
+
+// Hand-off into the AI/opponent phase (state 6 -> 7): 0.4s -> 0.1s
+
+// Original:
+//  002fc684 e8 00 80 d2    mov x8,#0x7
+//  002fc688 a8 99 d9 f2    movk x8,#0xcccd,lsl #32
+//  002fc68c 88 d9 e7 f2    movk x8,#0x3ecc,lsl #48
+//  002fc690 88 36 0a f9    str x8,[x20,#0x1468]
+
+// Replacement:
+002fc68c 88b9e7f2       //  movk x8,#0x3dcc,lsl #48
+
+// ---------------------------------------------------------------------------
+
+// AI draw/use-card delay: 0.8s -> 0.2s
+
+// Original:
+//  002fc838 a8 99 99 52    mov w8,#0xcccd
+//  002fc83c 88 e9 a7 72    movk w8,#0x3f4c,lsl #16
+//  002fc840 88 6e 14 b9    str w8,[x20,#0x146c]
+
+// Replacement:
+002fc83c 88c9a772       //  movk w8,#0x3e4c,lsl #16
+
+// ---------------------------------------------------------------------------
