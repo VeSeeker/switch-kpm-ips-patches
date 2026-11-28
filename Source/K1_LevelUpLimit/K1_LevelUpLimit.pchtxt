@@ -1,0 +1,746 @@
+@nsobid-814D285CFA9F4AADC0E8BC151AE3B5EE25F60E5A000000000000000000000000
+
+@flag offset_shift 0x100
+
+@enabled
+
+// LevelUpLimit for Star Wars: Knights of the Old Republic (Switch 1.0.4)
+// Original x86 patch author: Arniel_Stanislaus aka LanguageWriter123
+// (with revisions from Lane)
+// Semantic source: LevelUpLimit.kpatch / kotor1_gog_103 hooks
+//
+// Raises the maximum character level from 20 to 50 and adds the
+// required 2DA data files. Switch VAs are shown in the comments;
+// pchtxt offsets are VA - 0x7100000000.
+
+// ---------------------------------------------------------------------------
+// CSWClass::CalcLevelUpNumberFeats (FUN_7100231e94)
+// Switch stores feat gain per level in CSWClass inline byte arrays.
+// These arrays are converted to heap pointers so they can hold 50 entries.
+// Level is 1-based here, so the index is level-1.
+// ---------------------------------------------------------------------------
+
+// 0x7100231EAC  CalcLevelUpNumberFeats: retarget normal path
+// Original:
+//  00231eac e3 00 00 54
+// Replacement:
+//  00231eac 23 01 00 54
+00231eac 23010054
+
+// 0x7100231EB0  CalcLevelUpNumberFeats: pointer-array rewrite
+// Original:
+//  00231eb0 29 69 40 f9
+//  00231eb4 0a c7 98 52
+//  00231eb8 2a 00 a0 72
+//  00231ebc e8 03 1f 2a
+//  00231ec0 29 01 0a 8b
+//  00231ec4 0b 00 00 14
+//  00231ec8 08 1d 40 92
+//  00231ecc 0a 05 80 52
+//  00231ed0 0a 01 0a 9b
+//  00231ed4 48 f5 44 39
+//  00231ed8 1f 55 00 71
+//  00231edc 62 01 00 54
+//  00231ee0 4a f1 44 39
+//  00231ee4 0b 39 80 52
+//  00231ee8 29 69 40 f9
+//  00231eec 49 25 0b 9b
+//  00231ef0 08 01 09 8b
+//  00231ef4 09 8d 45 39
+//  00231ef8 29 00 00 39
+//  00231efc 08 3d 45 39
+//  00231f00 48 00 00 39
+//  00231f04 c0 03 5f d6
+//  00231f08 3f 00 00 39
+//  00231f0c 5f 00 00 39
+//  00231f10 c0 03 5f d6
+// Replacement:
+//  00231eb0 29 69 40 f9
+//  00231eb4 29 71 40 91
+//  00231eb8 29 e1 18 91
+//  00231ebc 2a 8d 45 39
+//  00231ec0 2a 00 00 39
+//  00231ec4 2a 3d 45 39
+//  00231ec8 4a 00 00 39
+//  00231ecc c0 03 5f d6
+//  00231ed0 0a 05 80 52
+//  00231ed4 0a 01 0a 9b
+//  00231ed8 48 f5 44 39
+//  00231edc 1f cd 00 71
+//  00231ee0 a2 1c 01 54
+//  00231ee4 4a f1 44 39
+//  00231ee8 0b 39 80 52
+//  00231eec 29 69 40 f9
+//  00231ef0 49 25 0b 9b
+//  00231ef4 08 05 00 d1
+//  00231ef8 2a b5 40 f9
+//  00231efc 4b 69 68 38
+//  00231f00 2b 00 00 39
+//  00231f04 2a a9 40 f9
+//  00231f08 4b 69 68 38
+//  00231f0c 4b 00 00 39
+//  00231f10 c0 03 5f d6
+00231eb0 296940f92971409129e118912a8d45392a0000392a3d45394a000039c0035fd60a0580520a010a9b48f544391fcd0071a21c01544af144390b398052296940f949250b9b080500d12ab540f94b6968382b0000392aa940f94b6968384b000039c0035fd6
+
+// 0x7100234274  CalcLevelUpNumberFeats zero handler
+// Original:
+//  00234274 00 00 00 00
+//  00234278 00 00 00 00
+//  0023427c 00 00 00 00
+// Replacement:
+//  00234274 3f 00 00 39
+//  00234278 5f 00 00 39
+//  0023427c c0 03 5f d6
+00234274 3f0000395f000039c0035fd6
+
+// ---------------------------------------------------------------------------
+// CSWClass::CalcNumberFeats (FUN_7100232964)
+// Second feat-gain consumer, using the same converted pointer arrays.
+// ---------------------------------------------------------------------------
+
+// 0x710021AAA4  CalcNumberFeats zero handler
+// Original:
+//  0021aaa4 00 00 00 00
+//  0021aaa8 00 00 00 00
+//  0021aaac 00 00 00 00
+// Replacement:
+//  0021aaa4 ea 03 1f 2a
+//  0021aaa8 eb 03 1f 2a
+//  0021aaac d5 5f 00 14
+0021aaa4 ea031f2aeb031f2ad55f0014
+
+// 0x71002329A8  CalcNumberFeats: pointer-array rewrite
+// Original:
+//  002329a8 09 69 40 f9
+//  002329ac 0b c7 98 52
+//  002329b0 2b 00 a0 72
+//  002329b4 ea 03 1f 2a
+//  002329b8 2b 01 0b 8b
+//  002329bc 0b 00 00 14
+//  002329c0 29 1d 40 92
+//  002329c4 0a 05 80 52
+//  002329c8 2b 59 0a 9b
+//  002329cc 6a f5 44 39
+//  002329d0 09 69 40 f9
+//  002329d4 5f 51 00 71
+//  002329d8 08 01 00 54
+//  002329dc 6b f1 44 39
+//  002329e0 0c 39 80 52
+//  002329e4 6b 25 0c 9b
+//  002329e8 4b 01 0b 8b
+//  002329ec 6a 8d 45 39
+//  002329f0 6b 3d 45 39
+//  002329f4 03 00 00 14
+//  002329f8 ea 03 1f 2a
+//  002329fc eb 03 1f 2a
+// Replacement:
+//  002329a8 09 69 40 f9
+//  002329ac 29 71 40 91
+//  002329b0 29 e1 18 91
+//  002329b4 2a 8d 45 39
+//  002329b8 2b 3d 45 39
+//  002329bc 11 00 00 14
+//  002329c0 0a 05 80 52
+//  002329c4 2b 59 0a 9b
+//  002329c8 6a f5 44 39
+//  002329cc 09 69 40 f9
+//  002329d0 5f c9 00 71
+//  002329d4 88 06 f4 54
+//  002329d8 6b f1 44 39
+//  002329dc 0c 39 80 52
+//  002329e0 6b 25 0c 9b
+//  002329e4 4d 05 00 d1
+//  002329e8 6c b5 40 f9
+//  002329ec 8a 69 6d 38
+//  002329f0 6c a9 40 f9
+//  002329f4 8b 69 6d 38
+//  002329f8 02 00 00 14
+//  002329fc 1f 20 03 d5
+002329a8 096940f92971409129e118912a8d45392b3d4539110000140a0580522b590a9b6af54439096940f95fc900718806f4546bf144390c3980526b250c9b4d0500d16cb540f98a696d386ca940f98b696d38020000141f2003d5
+
+// ---------------------------------------------------------------------------
+// CSWClass::GetSpellGain
+// Level bound 20 -> 50, read numSpellLevels/powerGain through the new
+// heap pointers, and move the 0xff out-of-range return into a code cave.
+// ---------------------------------------------------------------------------
+
+// 0x710025E12C  GetSpellGain: level bound 20->50
+// Original:
+//  0025e12c 1f 4d 00 71
+// Replacement:
+//  0025e12c 1f c9 00 71
+0025e12c 1fc90071
+
+// 0x710025E130  GetSpellGain: out-of-range -> 0xff cave
+// Original:
+//  0025e130 28 01 00 54
+// Replacement:
+//  0025e130 88 09 13 54
+0025e130 88091354
+
+// 0x710025E13C  GetSpellGain: numSpellLevels pointer
+// Original:
+//  0025e13c 08 00 08 8b
+// Replacement:
+//  0025e13c 0a 94 40 f9
+0025e13c 0a9440f9
+
+// 0x710025E140  GetSpellGain: numSpellLevels[level-1]
+// Original:
+//  0025e140 09 a1 44 39
+// Replacement:
+//  0025e140 49 69 68 38
+0025e140 49696838
+
+// 0x710025E148  GetSpellGain: no-spell -> 0xff cave
+// Original:
+//  0025e148 69 00 00 54
+// Replacement:
+//  0025e148 c9 08 13 54
+0025e148 c9081354
+
+// 0x710025E14C  GetSpellGain: powerGain pointer
+// Original:
+//  0025e14c 00 f1 44 39
+// Replacement:
+//  0025e14c 0a a0 40 f9
+0025e14c 0aa040f9
+
+// 0x710025E150  GetSpellGain: powerGain[level-1]
+// Original:
+//  0025e150 c0 03 5f d6
+// Replacement:
+//  0025e150 40 69 68 38
+0025e150 40696838
+
+// 0x710025E154  GetSpellGain: return after powerGain load
+// Original:
+//  0025e154 e0 1f 80 52
+// Replacement:
+//  0025e154 c0 03 5f d6
+0025e154 c0035fd6
+
+// 0x7100284260  GetSpellGain 0xff handler
+// Original:
+//  00284260 e0 63 00 91
+//  00284264 68 4e 00 b9
+// Replacement:
+//  00284260 e0 1f 80 52
+//  00284264 c0 03 5f d6
+00284260 e01f8052c0035fd6
+
+// ---------------------------------------------------------------------------
+// CSWClass::GetSpellsKnownPerLevel
+// Level bound 20 -> 50 and read numSpellLevels through its heap pointer.
+// ---------------------------------------------------------------------------
+
+// 0x710025E164  GetSpellsKnownPerLevel: level bound 20->50
+// Original:
+//  0025e164 1f 4d 00 71
+// Replacement:
+//  0025e164 1f c9 00 71
+0025e164 1fc90071
+
+// 0x710025E174  GetSpellsKnownPerLevel: numSpellLevels pointer
+// Original:
+//  0025e174 09 00 08 8b
+// Replacement:
+//  0025e174 0a 94 40 f9
+0025e174 0a9440f9
+
+// 0x710025E178  GetSpellsKnownPerLevel: numSpellLevels[level-1]
+// Original:
+//  0025e178 29 a1 44 39
+// Replacement:
+//  0025e178 49 69 68 38
+0025e178 49696838
+
+// ---------------------------------------------------------------------------
+// CSWClass::LoadFeatGain
+// Load 50 rows and write featGain/bonusFeatGain through their heap pointers.
+// ---------------------------------------------------------------------------
+
+// 0x710025E45C  LoadFeatGain: level loop bound 20->50
+// Original:
+//  0025e45c bf 52 00 f1
+// Replacement:
+//  0025e45c bf ca 00 f1
+0025e45c bfca00f1
+
+// 0x710025E480  LoadFeatGain: bonusFeatGain pointer
+// Original:
+//  0025e480 89 02 15 8b
+// Replacement:
+//  0025e480 89 b6 40 f9
+0025e480 89b640f9
+
+// 0x710025E484  LoadFeatGain: bonusFeatGain[level]
+// Original:
+//  0025e484 28 91 05 39
+// Replacement:
+//  0025e484 28 69 35 38
+0025e484 28693538
+
+// 0x710025E4A4  LoadFeatGain: featGain pointer
+// Original:
+//  0025e4a4 89 02 15 8b
+// Replacement:
+//  0025e4a4 89 aa 40 f9
+0025e4a4 89aa40f9
+
+// 0x710025E4A8  LoadFeatGain: featGain[level]
+// Original:
+//  0025e4a8 28 41 05 39
+// Replacement:
+//  0025e4a8 28 69 35 38
+0025e4a8 28693538
+
+// ---------------------------------------------------------------------------
+// CSWClass::LoadSpellGainTable
+// Load 50 rows and write numSpellLevels/powerGain through their heap pointers.
+// ---------------------------------------------------------------------------
+
+// 0x710025EF18  LoadSpellGainTable: level loop bound 20->50
+// Original:
+//  0025ef18 ff 52 00 f1
+// Replacement:
+//  0025ef18 ff ca 00 f1
+0025ef18 ffca00f1
+
+// 0x710025EF4C  LoadSpellGainTable: numSpellLevels pointer
+// Original:
+//  0025ef4c 88 02 17 8b
+// Replacement:
+//  0025ef4c 88 96 40 f9
+0025ef4c 889640f9
+
+// 0x710025EF50  LoadSpellGainTable: numSpellLevels[level]
+// Original:
+//  0025ef50 09 a1 04 39
+// Replacement:
+//  0025ef50 09 69 37 38
+0025ef50 09693738
+
+// 0x710025EF5C  LoadSpellGainTable: numSpellLevels base
+// Original:
+//  0025ef5c 1a a1 04 91
+// Replacement:
+//  0025ef5c 9a 96 40 f9
+0025ef5c 9a9640f9
+
+// 0x710025EF60  LoadSpellGainTable: powerGain base
+// Original:
+//  0025ef60 1b f1 04 91
+// Replacement:
+//  0025ef60 9b a2 40 f9
+0025ef60 9ba240f9
+
+// 0x710025EF84  LoadSpellGainTable: powerGain[level]
+// Original:
+//  0025ef84 68 03 00 39
+// Replacement:
+//  0025ef84 68 6b 37 38
+0025ef84 686b3738
+
+// 0x710025EF88  LoadSpellGainTable: reload numSpellLevels[level]
+// Original:
+//  0025ef88 48 03 40 39
+// Replacement:
+//  0025ef88 48 6b 77 38
+0025ef88 486b7738
+
+// ---------------------------------------------------------------------------
+// CSWClass::LoadSpellKnownTable
+// The spells-known pointer array grows from 20 to 50 entries (0xa0 -> 0x190).
+// numSpellLevels is read through its heap pointer and the level loop is 50.
+// ---------------------------------------------------------------------------
+
+// 0x710025F39C  LoadSpellKnownTable: alloc 50 pointers (0x190)
+// Original:
+//  0025f39c 00 14 80 52
+// Replacement:
+//  0025f39c 00 32 80 52
+0025f39c 00328052
+
+// 0x710025F3B4  LoadSpellKnownTable: numSpellLevels pointer
+// Original:
+//  0025f3b4 77 02 15 8b
+// Replacement:
+//  0025f3b4 77 96 40 f9
+0025f3b4 779640f9
+
+// 0x710025F3B8  LoadSpellKnownTable: numSpellLevels[level]
+// Original:
+//  0025f3b8 e0 a2 44 39
+// Replacement:
+//  0025f3b8 e0 6a 75 38
+0025f3b8 e06a7538
+
+// 0x710025F3C4  LoadSpellKnownTable: level loop bound 20->50
+// Original:
+//  0025f3c4 bf 52 00 f1
+// Replacement:
+//  0025f3c4 bf ca 00 f1
+0025f3c4 bfca00f1
+
+// 0x710025F3CC  LoadSpellKnownTable: numSpellLevels pointer (2nd)
+// Original:
+//  0025f3cc 77 02 15 8b
+// Replacement:
+//  0025f3cc 77 96 40 f9
+0025f3cc 779640f9
+
+// 0x710025F3D0  LoadSpellKnownTable: numSpellLevels[level] (2nd)
+// Original:
+//  0025f3d0 e0 a2 44 39
+// Replacement:
+//  0025f3d0 e0 6a 75 38
+0025f3d0 e06a7538
+
+// 0x710025F3E0  LoadSpellKnownTable: numSpellLevels base
+// Original:
+//  0025f3e0 f9 a2 04 91
+// Replacement:
+//  0025f3e0 f9 03 17 aa
+0025f3e0 f90317aa
+
+// 0x710025F3E8  LoadSpellKnownTable: numSpellLevels[level] bound
+// Original:
+//  0025f3e8 28 03 40 39
+// Replacement:
+//  0025f3e8 28 6b 75 38
+0025f3e8 286b7538
+
+// 0x710025F430  LoadSpellKnownTable: numSpellLevels[level] bound (2nd)
+// Original:
+//  0025f430 28 03 40 39
+// Replacement:
+//  0025f430 28 6b 75 38
+0025f430 286b7538
+
+// ---------------------------------------------------------------------------
+// CSWClass::LoadArmorClassTable
+// armor_bonus is already a heap pointer; grow it from 21 to 51 rows and run
+// the row loop 50 times (rows 1..50).
+// ---------------------------------------------------------------------------
+
+// 0x710025F5D4  LoadArmorClassTable: alloc 51 rows
+// Original:
+//  0025f5d4 a0 02 80 52
+// Replacement:
+//  0025f5d4 60 06 80 52
+0025f5d4 60068052
+
+// 0x710025F5E0  LoadArmorClassTable: 50-row loop
+// Original:
+//  0025f5e0 a3 93 00 d1
+//  0025f5e4 e0 03 13 aa
+//  0025f5e8 e1 03 1f 2a
+//  0025f5ec e2 03 14 aa
+//  0025f5f0 f9 2a 04 94
+//  0025f5f4 a8 c3 5d 38
+//  0025f5f8 1f 00 00 71
+//  0025f5fc e0 03 13 aa
+//  0025f600 c9 02 40 f9
+//  0025f604 a3 93 00 d1
+//  0025f608 e8 03 88 1a
+//  0025f60c 21 00 80 52
+//  0025f610 e2 03 14 aa
+//  0025f614 28 01 00 39
+//  0025f618 ef 2a 04 94
+// Replacement:
+//  0025f5e0 f7 03 1f 2a
+//  0025f5e4 a3 93 00 d1
+//  0025f5e8 e0 03 13 aa
+//  0025f5ec e1 03 17 2a
+//  0025f5f0 e2 03 14 aa
+//  0025f5f4 f8 2a 04 94
+//  0025f5f8 a8 c3 5d 38
+//  0025f5fc 1f 00 00 71
+//  0025f600 c9 02 40 f9
+//  0025f604 e8 03 88 1a
+//  0025f608 28 69 37 38
+//  0025f60c f7 06 00 11
+//  0025f610 ff ca 00 71
+//  0025f614 83 fe ff 54
+//  0025f618 c5 00 00 14
+0025f5e0 f7031f2aa39300d1e00313aae103172ae20314aaf82a0494a8c35d381f000071c90240f9e803881a28693738f7060011ffca007183feff54c5000014
+
+// ---------------------------------------------------------------------------
+// CSWRules constructor: required_exp_per_level (EXPTABLE)
+// Replace the 21-entry unrolled EXPTABLE read with a 51-int heap array
+// (0xcc bytes) and a 51-iteration loop. The old unrolled block is reused as
+// the code cave for the CSWClass allocation helper and the 0xff handler.
+// ---------------------------------------------------------------------------
+
+// 0x710028418C  CSWRules ctor: EXPTABLE 51-entry dynamic array
+// Original:
+//  0028418c a1 1d 00 b0
+//  00284190 21 ec 1b 91
+//  00284194 e0 63 00 91
+//  00284198 7b 1a 03 94
+//  0028419c e2 63 00 91
+//  002841a0 e3 13 00 91
+//  002841a4 e0 03 14 aa
+//  002841a8 e1 03 1f 2a
+//  002841ac 0a 98 03 94
+//  002841b0 e0 63 00 91
+//  002841b4 d5 1a 03 94
+//  002841b8 e8 07 40 b9
+//  002841bc a1 1d 00 b0
+//  002841c0 21 ec 1b 91
+//  002841c4 e0 63 00 91
+//  002841c8 68 42 00 b9
+//  002841cc 6e 1a 03 94
+//  002841d0 e2 63 00 91
+//  002841d4 e3 13 00 91
+//  002841d8 e0 03 14 aa
+//  002841dc 21 00 80 52
+//  002841e0 fd 97 03 94
+// Replacement:
+//  0028418c 80 19 80 52
+//  00284190 64 9c 0c 94
+//  00284194 60 22 00 f9
+//  00284198 f5 03 00 aa
+//  0028419c 16 00 80 d2
+//  002841a0 a1 1d 00 b0
+//  002841a4 21 ec 1b 91
+//  002841a8 e0 63 00 91
+//  002841ac 76 1a 03 94
+//  002841b0 e2 63 00 91
+//  002841b4 e3 13 00 91
+//  002841b8 e0 03 14 aa
+//  002841bc e1 03 16 2a
+//  002841c0 05 98 03 94
+//  002841c4 e0 63 00 91
+//  002841c8 d0 1a 03 94
+//  002841cc e8 07 40 b9
+//  002841d0 a8 7a 36 b8
+//  002841d4 d6 06 00 91
+//  002841d8 df ce 00 f1
+//  002841dc 2b fe ff 54
+//  002841e0 fc 00 00 14
+0028418c 80198052649c0c94602200f9f50300aa160080d2a11d00b021ec1b91e0630091761a0394e2630091e3130091e00314aae103162a05980394e0630091d01a0394e80740b9a87a36b8d6060091dfce00f12bfeff54fc000014
+
+// ---------------------------------------------------------------------------
+// CSWClass array allocation helper
+// Hook the CSWClass constructor call in LoadClassInfo and replace the
+// stride advance with a call that allocates one 0x100-byte block per class
+// and installs the five converted array pointers, then advances by 0x1c8.
+// ---------------------------------------------------------------------------
+
+// 0x71002841E4  CSWClass array allocation helper
+// Original:
+//  002841e4 e0 63 00 91
+//  002841e8 c8 1a 03 94
+//  002841ec e8 07 40 b9
+//  002841f0 a1 1d 00 b0
+//  002841f4 21 ec 1b 91
+//  002841f8 e0 63 00 91
+//  002841fc 68 46 00 b9
+//  00284200 61 1a 03 94
+//  00284204 e2 63 00 91
+//  00284208 e3 13 00 91
+//  0028420c e0 03 14 aa
+//  00284210 41 00 80 52
+//  00284214 f0 97 03 94
+//  00284218 e0 63 00 91
+//  0028421c bb 1a 03 94
+//  00284220 e8 07 40 b9
+//  00284224 a1 1d 00 b0
+//  00284228 21 ec 1b 91
+//  0028422c e0 63 00 91
+//  00284230 68 4a 00 b9
+//  00284234 54 1a 03 94
+//  00284238 e2 63 00 91
+//  0028423c e3 13 00 91
+//  00284240 e0 03 14 aa
+//  00284244 61 00 80 52
+//  00284248 e3 97 03 94
+//  0028424c e0 63 00 91
+//  00284250 ae 1a 03 94
+//  00284254 e8 07 40 b9
+//  00284258 a1 1d 00 b0
+// Replacement:
+//  002841e4 fd 7b bf a9
+//  002841e8 fd 03 00 91
+//  002841ec 00 20 80 52
+//  002841f0 4c 9c 0c 94
+//  002841f4 e9 03 00 aa
+//  002841f8 0a 02 80 52
+//  002841fc 3f 7d 81 a8
+//  00284200 4a 05 00 71
+//  00284204 c1 ff ff 54
+//  00284208 09 c8 00 91
+//  0028420c 4a 06 80 52
+//  00284210 eb 1f 80 52
+//  00284214 2b 15 00 38
+//  00284218 4a 05 00 71
+//  0028421c c1 ff ff 54
+//  00284220 a9 02 16 8b
+//  00284224 29 21 00 91
+//  00284228 ea 03 00 aa
+//  0028422c 2a 95 00 f9
+//  00284230 0a c8 00 91
+//  00284234 2a a1 00 f9
+//  00284238 0a 90 01 91
+//  0028423c 2a a9 00 f9
+//  00284240 0a 58 02 91
+//  00284244 2a b5 00 f9
+//  00284248 0a 20 03 91
+//  0028424c 2a d9 00 f9
+//  00284250 d6 22 07 91
+//  00284254 fd 7b c1 a8
+//  00284258 c0 03 5f d6
+002841e4 fd7bbfa9fd030091002080524c9c0c94e90300aa0a0280523f7d81a84a050071c1ffff5409c800914a068052eb1f80522b1500384a050071c1ffff54a902168b29210091ea0300aa2a9500f90ac800912aa100f90a9001912aa900f90a5802912ab500f90a2003912ad900f9d6220791fd7bc1a8c0035fd6
+
+// 0x71002859D0  LoadClassInfo: allocate CSWClass arrays
+// Original:
+//  002859d0 d6 22 07 91
+// Replacement:
+//  002859d0 05 fa ff 97
+002859d0 05faff97
+
+// ---------------------------------------------------------------------------
+// CSWClass::effective-CR table (LoadClassInfo)
+// effective-CR array converted to a heap pointer and loaded for 50 rows.
+// ---------------------------------------------------------------------------
+
+// 0x7100285A08  LoadClassInfo: effective-CR pointer slot
+// Original:
+//  00285a08 98 35 80 52
+// Replacement:
+//  00285a08 18 36 80 52
+00285a08 18368052
+
+// 0x7100286208  LoadClassInfo: load effective-CR pointer
+// Original:
+//  00286208 08 01 18 8b
+// Replacement:
+//  00286208 08 69 78 f8
+00286208 086978f8
+
+// 0x7100286218  LoadClassInfo: effective-CR loop 20->50
+// Original:
+//  00286218 df 52 00 f1
+// Replacement:
+//  00286218 df ca 00 f1
+00286218 dfca00f1
+
+// ---------------------------------------------------------------------------
+// CServerInfo constructor: max level
+// Raise the hard-coded maximum character level from 20 to 50.
+// ---------------------------------------------------------------------------
+
+// 0x710028A454  CServerInfo ctor: max level 20->50
+// Original:
+//  0028a454 88 02 c0 f2
+// Replacement:
+//  0028a454 48 06 c0 f2
+0028a454 4806c0f2
+
+// ---------------------------------------------------------------------------
+// StartAutoLevelup
+// Read required_exp_per_level through its heap pointer.
+// ---------------------------------------------------------------------------
+
+// 0x71002A8F68  StartAutoLevelup XP read
+// Original:
+//  002a8f68 09 09 37 8b
+//  002a8f6c 29 41 40 b9
+// Replacement:
+//  002a8f68 09 21 40 f9
+//  002a8f6c 29 59 77 b8
+002a8f68 092140f9295977b8
+
+// ---------------------------------------------------------------------------
+// CSWSCreatureStats::SetExperience
+// Read required_exp_per_level through its heap pointer at all three sites.
+// ---------------------------------------------------------------------------
+
+// 0x7100411AD0  SetExperience XP read 1
+// Original:
+//  00411ad0 29 09 28 8b
+//  00411ad4 29 41 40 b9
+// Replacement:
+//  00411ad0 29 21 40 f9
+//  00411ad4 29 59 68 b8
+00411ad0 292140f9295968b8
+
+// 0x7100411B54  SetExperience XP read 2
+// Original:
+//  00411b54 08 09 09 8b
+//  00411b58 08 41 40 b9
+// Replacement:
+//  00411b54 08 21 40 f9
+//  00411b58 08 79 69 b8
+00411b54 082140f9087969b8
+
+// 0x7100411C04  SetExperience XP read 3
+// Original:
+//  00411c04 08 09 09 8b
+//  00411c08 08 41 40 b9
+// Replacement:
+//  00411c04 08 21 40 f9
+//  00411c08 08 79 69 b8
+00411c04 082140f9087969b8
+
+// ---------------------------------------------------------------------------
+// CanLevelUp
+// Read required_exp_per_level through its heap pointer at both sites.
+// ---------------------------------------------------------------------------
+
+// 0x7100414690  CanLevelUp XP read 1
+// Original:
+//  00414690 29 09 0a 8b
+//  00414694 29 41 40 b9
+// Replacement:
+//  00414690 29 21 40 f9
+//  00414694 29 79 6a b8
+00414690 292140f929796ab8
+
+// 0x7100414740  CanLevelUp XP read 2
+// Original:
+//  00414740 29 09 0a 8b
+//  00414744 29 41 40 b9
+// Replacement:
+//  00414740 29 21 40 f9
+//  00414744 29 79 6a b8
+00414740 292140f929796ab8
+
+// ---------------------------------------------------------------------------
+// GetExpNeededForLevelUp
+// Read required_exp_per_level through its heap pointer at both sites.
+// ---------------------------------------------------------------------------
+
+// 0x7100414F84  GetExpNeededForLevelUp XP read 1
+// Original:
+//  00414f84 08 09 09 8b
+//  00414f88 00 41 40 b9
+// Replacement:
+//  00414f84 08 21 40 f9
+//  00414f88 00 79 69 b8
+00414f84 082140f9007969b8
+
+// 0x710041502C  GetExpNeededForLevelUp XP read 2
+// Original:
+//  0041502c 08 09 09 8b
+//  00415030 00 41 40 b9
+// Replacement:
+//  0041502c 08 21 40 f9
+//  00415030 00 79 69 b8
+0041502c 082140f9007969b8
+
+// ---------------------------------------------------------------------------
+// AutoLevelup
+// Read required_exp_per_level through its heap pointer.
+// ---------------------------------------------------------------------------
+
+// 0x710041B8A8  AutoLevelup XP read
+// Original:
+//  0041b8a8 29 49 2b 8b
+//  0041b8ac 29 41 40 b9
+// Replacement:
+//  0041b8a8 29 21 40 f9
+//  0041b8ac 29 59 6b b8
+0041b8a8 292140f929596bb8

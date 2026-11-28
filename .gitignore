@@ -6,3 +6,6 @@ Base_Patches/
 
 # Release zip
 *.zip
+
+# Shader things
+ShaderWork/
